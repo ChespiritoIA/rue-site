@@ -42,7 +42,8 @@
     <p>Publicações oficiais de rotina: comunicados, ordens do dia, instruções e avisos.</p>
   </header>
 
- <nav id="topNav">
+  <div class="nav-wrap">
+    <nav id="topNav">
   <a href="./">Início</a>
   <a href="documentos.html">Documentos</a>
   <a class="active" href="boletins.html">Boletins</a>
@@ -50,7 +51,6 @@
   <a href="secretaria/">Secretaria</a>
   <a href="formularios.html">Formulários</a>
 </nav>
-
 
   </div>
 
@@ -99,7 +99,14 @@
     // tags -> lista de palavras-chave
     // anexos -> [{nome:"PDF", url:"/assets/boletim-003.pdf"}]
     const boletins = [
-      
+      {
+        id: "OD-003",
+        data: "2025-11-10",
+        titulo: "Ordem do Dia — Atividades de Instrução",
+        texto: "Programação de instrução: TFM, tiro simulado e formatura às 18h.",
+        tags: ["Ordem do Dia","Instrução"],
+        anexos: [file:///C:/Users/joaov/Downloads/Boletim_Promocoes_23BC%20(1).pdf]
+      },
       {
         id: "ADM-021",
         data: "2025-11-08",
