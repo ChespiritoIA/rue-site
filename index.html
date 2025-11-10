@@ -1,117 +1,212 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUE - EXÉRCITO BRASILEIRO</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0c1b0e;
-            color: #fff;
-        }
-        header {
-            background-color: #0f2e15;
-            padding: 20px;
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #0a2411;
-            padding: 10px;
-        }
-        nav a {
-            margin: 0 15px;
-            color: #c5e8c7;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .container {
-            padding: 30px;
-        }
-        h2 {
-            color: #95ff9a;
-        }
-        .card {
-            background-color: #12291a;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #0f2e15;
-            margin-top: 40px;
-            color: #b7d9ba;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RUE - EXÉRCITO BRASILEIRO</title>
+  <meta name="description" content="Portal de referência do Regulamento de Uniformes do Exército (RUE): normas, fardamentos, estrutura e contatos." />
+  <style>
+    :root {
+      --bg: #0c1b0e;
+      --bg-2: #0a2411;
+      --card: #12291a;
+      --brand: #95ff9a;
+      --text: #e7f6ea;
+      --muted: #b7d9ba;
+      --accent: #1a3b24;
+    }
+
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(180deg, #0f2e15 0%, #0e2814 100%);
+      padding: 32px 16px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 6px;
+      font-size: clamp(22px, 3vw, 34px);
+      letter-spacing: .5px;
+    }
+    header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .nav-wrap { position: sticky; top: 0; z-index: 20; box-shadow: 0 1px 0 rgba(255,255,255,.04); }
+    nav {
+      display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+      background: var(--bg-2); padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    nav a {
+      color: var(--muted); text-decoration: none; font-weight: 700; font-size: .95rem;
+      padding: 8px 12px; border-radius: 10px; transition: .2s ease;
+    }
+    nav a:hover, nav a.active { color: var(--bg); background: var(--brand); }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 28px 16px; }
+    h2 { color: var(--brand); margin: 12px 0 14px; font-size: clamp(18px, 2.3vw, 26px); }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--accent));
+      padding: 20px; border-radius: 14px; margin-bottom: 18px;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 800px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+
+    table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 12px; }
+    th, td { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,.08); text-align: left; }
+    th { background: #12331d; color: var(--brand); }
+
+    .note { font-size: .92rem; color: var(--muted); }
+
+    footer { text-align: center; padding: 26px 12px; background: #0f2e15; color: var(--muted); margin-top: 30px; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 999px; background: #12331d; color: var(--brand); font-weight: 700; font-size: .8rem; }
+  </style>
 </head>
 <body>
-    <header>RUE - EXÉRCITO BRASILEIRO</header>
+  <header>
+    <h1>RUE – EXÉRCITO BRASILEIRO</h1>
+    <p>Referência rápida do Regulamento de Uniformes do Exército (RUE)</p>
+  </header>
 
-    <nav>
-        <a href="#inicio">Início</a>
-        <a href="#regimento">Regimento</a>
-        <a href="#fardas">Fardas</a>
-        <a href="#equipe">Equipe</a>
-        <a href="#contato">Contato</a>
+  <div class="nav-wrap">
+    <nav id="topNav">
+      <a href="#inicio">Início</a>
+      <a href="#regimento">Regimento</a>
+      <a href="#fardas">Fardas</a>
+      <a href="#documentos">Documentos</a>
+      <a href="#contato">Contato</a>
     </nav>
+  </div>
 
-    <div class="container" id="inicio">
-        <h2>Bem-vindo ao site do RUE</h2>
-        <div class="card">
-            <p>Este site segue o padrão do Regulamento de Uniformes do Exército Brasileiro (RUE). Aqui você encontra informações organizadas sobre uniformes, normas, estrutura e procedimentos.</p>
-        </div>
+  <main class="container" id="inicio">
+    <h2>Bem-vindo</h2>
+    <div class="card">
+      <p>Este portal segue o padrão do <strong>Regulamento de Uniformes do Exército Brasileiro (RUE)</strong>. Utilize as seções abaixo para acessar normas sintéticas, modelos de fardamento e links úteis.</p>
+      <p class="note">Observação: Conteúdo adaptado para consulta rápida. Em casos de dúvida, prevalece o texto do RUE publicado em Diário Oficial.</p>
     </div>
 
-    <div class="container" id="regimento">
-        <h2>Regimento</h2>
-        <div class="card">
-            <p>• Normas gerais<br>
-               • Conduta<br>
-               • Hierarquia e disciplina<br>
-               • Procedimentos de comunicação<br>
-               • Procedimentos de formatura e revista<br>
-            </p>
-        </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Objetivos</h3>
+        <ul>
+          <li>Simplificar a consulta ao RUE</li>
+          <li>Uniformizar a apresentação de fardas</li>
+          <li>Disponibilizar referências em um único local</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Status</h3>
+        <p><span class="badge">Ativo</span> – Última atualização: <span id="lastUpdate">—</span></p>
+      </div>
     </div>
+  </main>
 
-    <div class="container" id="fardas">
-        <h2>Fardas</h2>
-        <div class="card">
-            <p>• Farda 5A (Serviço/Operacional)<br>
-               • Farda 5B (Instrução)<br>
-               • Farda de passeio<br>
-               • Fardamento cerimonial<br>
-               • Farda de gala<br>
-            </p>
-        </div>
+  <section class="container" id="regimento">
+    <h2>Regimento (síntese)</h2>
+    <div class="card">
+      <ul>
+        <li>Normas gerais</li>
+        <li>Conduta</li>
+        <li>Hierarquia e disciplina</li>
+        <li>Procedimentos de comunicação</li>
+        <li>Formaturas e revista</li>
+      </ul>
+      <p class="note">Esta lista é indicativa. Personalize conforme a necessidade da sua OM.</p>
     </div>
+  </section>
 
-    <div class="container" id="equipe">
-        <h2>Equipe</h2>
-        <div class="card">
-            <p>• Comandante<br>
-               • Subcomandante<br>
-               • Chefes de seção<br>
-               • Instrutores<br>
-               • Alunos e recrutas<br>
-            </p>
-        </div>
+  <section class="container" id="fardas">
+    <h2>Fardas (exemplo de tabela)</h2>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Fardamento</th>
+            <th>Uso</th>
+            <th>Observações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5A</td>
+            <td>Serviço / Operacional</td>
+            <td>Camuflado; itens conforme RUE.</td>
+          </tr>
+          <tr>
+            <td>5B</td>
+            <td>Instrução</td>
+            <td>Variantes para instruções específicas.</td>
+          </tr>
+          <tr>
+            <td>Passeio</td>
+            <td>Eventos e representações</td>
+            <td>Componentes e distinções por posto/graduação.</td>
+          </tr>
+          <tr>
+            <td>Gala / Cerimonial</td>
+            <td>Atos solenes</td>
+            <td>Aplicação conforme convites e protocolos.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </section>
 
-    <div class="container" id="contato">
-        <h2>Contato</h2>
-        <div class="card">
-            <p>Email oficial: contato@exercito.com<br>
-               Status: Ativo<br>
-            </p>
-        </div>
+  <section class="container" id="documentos">
+    <h2>Documentos</h2>
+    <div class="card">
+      <p>Insira aqui os links oficiais (PDF) do RUE e portarias correlatas.</p>
+      <ul>
+        <li><em>RUE (PDF) – link oficial</em></li>
+        <li><em>Portarias complementares</em></li>
+      </ul>
     </div>
+  </section>
 
-    <foote
+  <section class="container" id="contato">
+    <h2>Contato</h2>
+    <div class="card">
+      <p>Email institucional: <a href="mailto:contato@exercito.com" style="color:var(--brand)">contato@exercito.com</a></p>
+      <p>Status do site: <span class="badge">Online</span></p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 — Autorizado por <strong>Tenente Coronel Silva</strong>
+  </footer>
+
+  <script>
+    // Data de atualização (client-side)
+    document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('pt-BR');
+
+    // Destacar link ativo conforme rolagem
+    const sections = ['inicio','regimento','fardas','documentos','contato'];
+    const nav = document.getElementById('topNav');
+    const links = [...nav.querySelectorAll('a')];
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(a=>a.classList.remove('active'));
+          const id = e.target.id;
+          const active = links.find(a=>a.getAttribute('href') === `#${id}`);
+          if(active) active.classList.add('active');
+        }
+      });
+    },{ rootMargin: '-40% 0px -50% 0px', threshold: .1 });
+
+    sections.forEach(id=>{ const el = document.getElementById(id); if(el) obs.observe(el); });
+  </script>
+</body>
+</html>
