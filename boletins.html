@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Boletins e Comunicados — Exército</title>
+  <meta name="description" content="Boletins internos, ordens do dia e comunicados da Secretaria."/>
+  <style>
+    :root{
+      --bg:#0c1b0e; --bg-2:#0a2411; --card:#12291a; --brand:#95ff9a;
+      --text:#e7f6ea; --muted:#b7d9ba; --accent:#1a3b24;
+    }
+    html{scroll-behavior:smooth} *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    header{background:linear-gradient(180deg,#0f2e15 0%,#0e2814 100%);padding:32px 16px 20px;text-align:center}
+    header h1{margin:0 0 6px;font-size:clamp(22px,3vw,34px)}
+    header p{margin:0;color:var(--muted);font-size:.95rem}
+    .nav-wrap{position:sticky;top:0;z-index:20;box-shadow:0 1px 0 rgba(255,255,255,.04)}
+    nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;background:var(--bg-2);padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06)}
+    nav a{color:var(--muted);text-decoration:none;font-weight:700;font-size:.95rem;padding:8px 12px;border-radius:10px;transition:.2s ease}
+    nav a:hover, nav a.active{color:var(--bg);background:var(--brand)}
+    .container{max-width:1100px;margin:0 auto;padding:28px 16px}
+    h2{color:var(--brand);margin:12px 0 14px;font-size:clamp(18px,2.3vw,26px)}
+    .card{background:linear-gradient(180deg,var(--card),var(--accent));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,.06)}
+    .row{display:grid;grid-template-columns:1fr;gap:14px}
+    @media (min-width:860px){.row{grid-template-columns:2fr 1fr}}
+    .input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0f2817;color:var(--text)}
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#12331d;color:var(--brand);font-weight:700;font-size:.78rem;margin-right:6px}
+    .muted{color:var(--muted);font-size:.92rem}
+    .b-item{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:14px;border-radius:12px;background:rgba(18,41,26,.65);border:1px solid rgba(255,255,255,.06);margin-bottom:10px}
+    .b-title{margin:0 0 6px;font-size:1.05rem}
+    .b-meta{font-size:.88rem;color:var(--muted)}
+    .link{color:var(--brand);text-decoration:none;font-weight:700}
+    .right{text-align:right}
+    .btn{display:inline-block;padding:8px 12px;border-radius:10px;background:var(--brand);color:#06230e;font-weight:800;text-decoration:none}
+    footer{text-align:center;padding:26px 12px;background:#0f2e15;color:var(--muted);margin-top:30px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Boletins & Comunicados</h1>
+    <p>Publicações oficiais de rotina: comunicados, ordens do dia, instruções e avisos.</p>
+  </header>
+
+  <div class="nav-wrap">
+    <nav id="topNav">
+      <a href="/">Início</a>
+      <a href="/documentos.html">Documentos</a>
+      <a class="active" href="/boletins.html">Boletins</a>
+      <a href="/escalas.html">Escalas</a>
+      <a href="/secretaria/">Secretaria</a>
+      <a href="/formularios.html">Formulários</a>
+    </nav>
+  </div>
+
+  <main class="container">
+    <section class="card">
+      <h2>Filtro</h2>
+      <div class="row">
+        <input id="q" class="input" type="search" placeholder="Buscar por título, texto, tag ou número do boletim..." />
+        <div>
+          <select id="tag" class="input" style="margin-bottom:8px">
+            <option value="">Todas as tags</option>
+            <option>Ordem do Dia</option>
+            <option>Instrução</option>
+            <option>Administração</option>
+            <option>Escalas</option>
+            <option>Promoções</option>
+          </select>
+          <select id="ordem" class="input">
+            <option value="desc">Mais recentes primeiro</option>
+            <option value="asc">Mais antigos primeiro</option>
+          </select>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:8px">Dica: você pode digitar por exemplo “#OD-003” ou “instrução tiro”.</p>
+    </section>
+
+    <section>
+      <h2>Publicações</h2>
+      <div id="lista"></div>
+      <p id="vazio" class="muted" style="display:none">Nenhum boletim encontrado para o filtro aplicado.</p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 — Autorizado por <strong>Tenente Coronel Silva</strong>
+  </footer>
+
+  <script>
+    // === DADOS DE EXEMPLO ===
+    // Para adicionar um novo boletim, duplique um objeto dentro do array abaixo.
+    // Campos:
+    // id -> um código único do boletim (ex.: "OD-003")
+    // data -> "AAAA-MM-DD"
+    // titulo -> título curto
+    // texto -> descrição/resumo
+    // tags -> lista de palavras-chave
+    // anexos -> [{nome:"PDF", url:"/assets/boletim-003.pdf"}]
+    const boletins = [
+      {
+        id: "OD-003",
+        data: "2025-11-10",
+        titulo: "Ordem do Dia — Atividades de Instrução",
+        texto: "Programação de instrução: TFM, tiro simulado e formatura às 18h.",
+        tags: ["Ordem do Dia","Instrução"],
+        anexos: []
+      },
+      {
+        id: "ADM-021",
+        data: "2025-11-08",
+        titulo: "Atualização cadastral",
+        texto: "Prazos e documentos para atualização de dados de pessoal.",
+        tags: ["Administração"],
+        anexos: [{nome:"Modelo de Requerimento (PDF)", url:"#"}]
+      },
+      {
+        id: "ESC-014",
+        data: "2025-11-05",
+        titulo: "Escala de Serviço — Semana",
+        texto: "Publicação da escala com responsáveis por dia e por seção.",
+        tags: ["Escalas"],
+        anexos: [{nome:"Escala 05-11 a 11-11 (PDF)", url:"#"}]
+      }
+    ];
+
+    // === RENDERIZAÇÃO ===
+    const $q = document.getElementById('q');
+    const $tag = document.getElementById('tag');
+    const $ordem = document.getElementById('ordem');
+    const $lista = document.getElementById('lista');
+    const $vazio = document.getElementById('vazio');
+
+    function aplicaFiltro() {
+      const termo = ($q.value || '').toLowerCase().trim();
+      const tag = $tag.value;
+      const ordem = $ordem.value;
+
+      let arr = boletins.slice();
+
+      if (termo) {
+        arr = arr.filter(b =>
+          b.id.toLowerCase().includes(termo) ||
+          b.titulo.toLowerCase().includes(termo) ||
+          b.texto.toLowerCase().includes(termo) ||
+          b.tags.some(t => t.toLowerCase().includes(termo))
+        );
+      }
+
+      if (tag) {
+        arr = arr.filter(b => b.tags.includes(tag));
+      }
+
+      arr.sort((a,b) => ordem === 'asc'
+        ? a.data.localeCompare(b.data)
+        : b.data.localeCompare(a.data)
+      );
+
+      render(arr);
+    }
+
+    function render(items){
+      $lista.innerHTML = '';
+      if (!items.length){ $vazio.style.display='block'; return; }
+      $vazio.style.display='none';
+
+      items.forEach(b=>{
+        const el = document.createElement('div');
+        el.className = 'b-item';
+        el.innerHTML = `
+          <div>
+            <h3 class="b-title">${b.titulo}</h3>
+            <div class="b-meta">Boletim <strong>#${b.id}</strong> — ${formataData(b.data)}</div>
+            <p style="margin:.4rem 0 0">${b.texto}</p>
+            <div style="margin-top:8px">${b.tags.map(t=>`<span class="badge">${t}</span>`).join('')}</div>
+            ${b.anexos.length ? `<div style="margin-top:8px">${b.anexos.map(a=>`<a class="link" href="${a.url}" target="_blank" rel="noopener">${a.nome}</a>`).join(' · ')}</div>` : ''}
+          </div>
+          <div class="right">
+            <a class="btn" href="#${b.id}" onclick="alert('Use os anexos para abrir os documentos.');return false;">Detalhes</a>
+          </div>
+        `;
+        $lista.appendChild(el);
+      });
+    }
+
+    function formataData(str){
+      const [y,m,d] = str.split('-');
+      return `${d}/${m}/${y}`;
+    }
+
+    [$q,$tag,$ordem].forEach(el => el.addEventListener('input', aplicaFiltro));
+    aplicaFiltro();
+
+    // Destacar nav ativo
+    [...document.querySelectorAll('#topNav a')].forEach(a=>{
+      a.classList.toggle('active', a.getAttribute('href') === '/boletins.html');
+    });
+  </script>
+</body>
+</html>
