@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secretaria do Exército — Portal</title>
+  <meta name="description" content="Portal da Secretaria: instruções, modelos, contatos e procedimentos administrativos."/>
+  <style>
+    :root{
+      --bg:#0c1b0e; --bg-2:#0a2411; --card:#12291a; --brand:#95ff9a;
+      --text:#e7f6ea; --muted:#b7d9ba; --accent:#1a3b24;
+    }
+    html{scroll-behavior:smooth}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    header{background:linear-gradient(180deg,#0f2e15 0%,#0e2814 100%);padding:32px 16px 20px;text-align:center}
+    header h1{margin:0 0 6px;font-size:clamp(22px,3vw,34px)}
+    header p{margin:0;color:var(--muted);font-size:.95rem}
+    .nav-wrap{position:sticky;top:0;z-index:20;box-shadow:0 1px 0 rgba(255,255,255,.04)}
+    nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;background:var(--bg-2);padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06)}
+    nav a{color:var(--muted);text-decoration:none;font-weight:700;font-size:.95rem;padding:8px 12px;border-radius:10px;transition:.2s ease}
+    nav a:hover, nav a.active{color:var(--bg);background:var(--brand)}
+    .container{max-width:1100px;margin:0 auto;padding:28px 16px}
+    h2{color:var(--brand);margin:12px 0 14px;font-size:clamp(18px,2.3vw,26px)}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media (min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .card{background:linear-gradient(180deg,var(--card),var(--accent));padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,.06)}
+    .card h3{margin-top:0}
+    .list{margin:0;padding-left:18px}
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#12331d;color:var(--brand);font-weight:700;font-size:.8rem}
+    .muted{color:var(--muted);font-size:.92rem}
+    footer{text-align:center;padding:26px 12px;background:#0f2e15;color:var(--muted);margin-top:30px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--brand);color:#06230e;font-weight:800;text-decoration:none}
+    .btn:hover{filter:brightness(1.05)}
+    .cols{display:grid;grid-template-columns:1fr;gap:16px}
+    @media (min-width:800px){.cols{grid-template-columns:2fr 1fr}}
+    .table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden}
+    .table th,.table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}
+    .table th{background:#12331d;color:var(--brand)}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Secretaria do Exército — Portal</h1>
+    <p>Atendimento, modelos, comunicados, escalas e procedimentos administrativos.</p>
+  </header>
+
+  <div class="nav-wrap">
+    <nav id="topNav">
+      <a href="/">Início</a>
+      <a href="/documentos.html">Documentos</a>
+      <a href="/boletins.html">Boletins</a>
+      <a href="/escalas.html">Escalas</a>
+      <a class="active" href="#topo">Secretaria</a>
+      <a href="/formularios.html">Formulários</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+
+  <main class="container">
+    <section class="cols">
+      <div class="card">
+        <h2>Atalhos rápidos</h2>
+        <p class="muted">Acesso direto às páginas e rotinas mais usadas.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Apresentação Pessoal</h3>
+            <p>Orientações de apresentação individual conforme RUE (cabelo, barba, adereços, asseio, uniformização).</p>
+            <a class="btn" href="/documentos.html#apresentacao">Ver orientações</a>
+          </div>
+          <div class="card">
+            <h3>Solicitações</h3>
+            <p>Requerimentos de cadastro, atualização de dados, justificativas e emissão de documentos.</p>
+            <a class="btn" href="/formularios.html">Abrir formulários</a>
+          </div>
+          <div class="card">
+            <h3>Boletins & Comunicados</h3>
+            <p>Publicações internas, ordens do dia e avisos de instrução.</p>
+            <a class="btn" href="/boletins.html">Acessar boletins</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h2>Status & Contatos</h2>
+        <p>Status do atendimento: <span class="badge">Operante</span></p>
+        <table class="table">
+          <thead><tr><th>Secção</th><th>Contato</th></tr></thead>
+          <tbody>
+            <tr><td>Secretaria</td><td>secretaria@exercito.com</td></tr>
+            <tr><td>Pessoal</td><td>pessoal@exercito.com</td></tr>
+            <tr><td>Instrução</td><td>instrucao@exercito.com</td></tr>
+          </tbody>
+        </table>
+        <p class="muted">Horário-base: 08h–18h (alterações conforme boletim).</p>
+      </aside>
+    </section>
+
+    <section class="container" id="procedimentos" style="padding-left:0;padding-right:0">
+      <div class="card">
+        <h2>Fluxos e Procedimentos</h2>
+        <ol class="list">
+          <li><strong>Cadastro inicial:</strong> preencher formulário, anexar documentos e aguardar validação.</li>
+          <li><strong>Atualização de dados:</strong> solicitar via formulário específico com justificativa.</li>
+          <li><strong>Comunicados oficiais:</strong> publicados em <a href="/boletins.html">Boletins</a>.</li>
+          <li><strong>Apresentação pessoal:</strong> orientações em <a href="/documentos.html#apresentacao">Documentos</a>.</li>
+          <li><strong>Escalas:</strong> consulta e atualizações em <a href="/escalas.html">Escalas</a>.</li>
+        </ol>
+        <p class="muted">Observação: Em caso de conflito entre esta página e documentos oficiais, prevalece o texto publicado nos documentos.</p>
+      </div>
+    </section>
+
+    <section id="contato" class="card">
+      <h2>Contato</h2>
+      <p>Para dúvidas gerais, abrir chamado via <a href="/formularios.html">Formulários</a> ou enviar e-mail para <a href="mailto:secretaria@exercito.com">secretaria@exercito.com</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 — Autorizado por <strong>Tenente Coronel Silva</strong>
+  </footer>
+
+  <script>
+    // Destaca link ativo (nav) ao rolar
+    const links=[...document.querySelectorAll('#topNav a')];
+    function setActive(path){
+      links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')===path));
+    }
+    setActive('/secretaria/index.html');
+  </script>
+</body>
+</html>
